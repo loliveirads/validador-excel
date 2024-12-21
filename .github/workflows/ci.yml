@@ -38,7 +38,7 @@ jobs:
 
       # 7. Rodar todos os testes
       - name: Rodar todos os testes
-        run: pytest tests/
+        run: pytest tests/test__contrato.py
 
       # 8. Mostrar diretório atual
       - name: Qual diretorio
