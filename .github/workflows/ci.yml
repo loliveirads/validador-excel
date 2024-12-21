@@ -37,7 +37,7 @@ jobs:
         run: pip freeze
 
       # 7. Rodar todos os testes
-      - name: Rodar todos os testes
+      - name: Rodar testes
         run: pytest tests/test__contrato.py
 
       # 8. Mostrar diretório atual
