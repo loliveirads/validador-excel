@@ -10,13 +10,40 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
     steps:
+      # 1. Baixar o código do repositório
       - name: Baixar o código
         uses: actions/checkout@v4
 
+      # 2. Instalar a versão específica do Python
       - name: Instalar o Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Qual diretorio estou?
+      # 3. Verificar versão do Python
+      - name: Verificar versão do Python
+        run: python --version
+
+      # 4. Atualizar pip
+      - name: Atualizar pip
+        run: python -m pip install --upgrade pip
+
+      # 5. Instalar dependências do projeto
+      - name: Instalar as dependências
+        run: pip install -r requirements.txt
+
+      # 6. Listar dependências instaladas
+      - name: Listar dependências instaladas
+        run: pip freeze
+
+      # 7. Rodar todos os testes
+      - name: Rodar todos os testes
+        run: pytest tests/
+
+      # 8. Mostrar diretório atual
+      - name: Qual diretorio
         run: pwd
+
+      # 9. Listar arquivos no diretório atual
+      - name: O que tem aqui
+        run: ls -l
